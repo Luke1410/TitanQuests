@@ -1,0 +1,2 @@
+# TitanQuests
+WoW Addon: TitanQuests
