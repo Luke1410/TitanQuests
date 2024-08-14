@@ -1,0 +1,11 @@
+## Interface: 20003
+## Title: Titan Panel [Quests] v0.21
+## Notes: A quest list for Titan Panel
+## Author: Corgi
+## SavedVariables: 
+## OptionalDeps: MonkeyQuest, QuestHistory, QuestIon, PartyQuests, QuestBank
+## Dependencies: Titan
+## LoadOnDemand: 0
+TitanQuestsDetails.xml
+TitanQuests.xml
+
