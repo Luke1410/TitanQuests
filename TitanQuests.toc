@@ -1,11 +1,10 @@
-## Interface: 20400
-## Title: Titan Panel [Quests] v0.24
+## Interface: 30000
+## Title: Titan Panel [|cffeda55fQuests|r] |cff00aa002.05.30000|r
+## Author: urnati
+## Version: 2.05
 ## Notes: A quest list for Titan Panel
-## Author: Corgi
-## SavedVariables: 
-## OptionalDeps: MonkeyQuest, QuestHistory, QuestIon, PartyQuests, QuestBank
-## Dependencies: Titan
+## RequiredDeps: Titan
+## OptionalDeps: MonkeyQuest,QuestHistory,QuestIon,PartyQuests,QuestBank
+## DefaultState: Enabled
 ## LoadOnDemand: 0
-TitanQuestsDetails.xml
 TitanQuests.xml
-
