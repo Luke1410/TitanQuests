@@ -1,5 +1,5 @@
-## Interface: 20100
-## Title: Titan Panel [Quests] v0.21
+## Interface: 20400
+## Title: Titan Panel [Quests] v0.24
 ## Notes: A quest list for Titan Panel
 ## Author: Corgi
 ## SavedVariables: 

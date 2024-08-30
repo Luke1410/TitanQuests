@@ -8,6 +8,7 @@ Titan Panel [Quests]
 	displays the following info:
 	- total number of quests
 	- number of Elite quests
+	- number of Group quests
 	- number of Dungeon quests
 	- number of Raid quests
 	- number of PvP quests 
@@ -164,6 +165,7 @@ function TitanPanelQuestsButton_OnLoad()
 			SortByLocation = 1,
 			SortByTitle = TITAN_NIL,
 			ShowElite = TITAN_NIL,
+			ShowGroup = TITAN_NIL,
 			ShowDungeon = TITAN_NIL,
 			ShowRaid = TITAN_NIL,
 			ShowPVP = TITAN_NIL,
@@ -335,6 +337,7 @@ function TitanPanelQuestsButton_GetTooltipText()
 	
 	-- counters
 	local numElite = 0;
+	local numGroup = 0;
 	local numDungeon = 0;
 	local numRaid = 0;
 	local numPVP = 0;
@@ -356,6 +359,8 @@ function TitanPanelQuestsButton_GetTooltipText()
 	for i=1, numQuests do
 		if ( questlist[i].questTag == ELITE ) then
 			numElite = numElite + 1;
+		elseif (questlist[i].questTag == GROUP) then
+			numGroup = numGroup + 1;
 		elseif ( questlist[i].questTag == TITAN_QUESTS_DUNGEON ) then
 			numDungeon = numDungeon + 1;
 		elseif ( questlist[i].questTag == TITAN_QUESTS_RAID ) then
@@ -375,7 +380,10 @@ function TitanPanelQuestsButton_GetTooltipText()
 
 	tooltipRichText = tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_QUESTS_TEXT)..TitanUtils_GetHighlightText(numQuests.."\n");
 	tooltipRichText = tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_ELITE_TEXT)..TitanUtils_GetHighlightText(numElite.."\n");
-	tooltipRichText = tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_DUNGEON_TEXT)..TitanUtils_GetHighlightText(numDungeon.."\n");
+	tooltipRichText =
+tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_GROUP_TEXT)..TitanUtils_GetHighlightText(numGroup.."\n");
+	tooltipRichText =
+tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_DUNGEON_TEXT)..TitanUtils_GetHighlightText(numDungeon.."\n");
 	tooltipRichText = tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_RAID_TEXT)..TitanUtils_GetHighlightText(numRaid.."\n");
 	tooltipRichText = tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_PVP_TEXT)..TitanUtils_GetHighlightText(numPVP.."\n");
 	tooltipRichText = tooltipRichText..TitanUtils_GetNormalText(TITAN_QUESTS_TOOLTIP_REGULAR_TEXT)..TitanUtils_GetHighlightText(numReg.."\n");
@@ -454,6 +462,10 @@ function TitanPanelRightClickMenu_PrepareQuestsMenu()
 	
 			if ( TitanGetVar(TITAN_QUESTS_ID, "ShowElite") ) then
 				if ( questlist[i].questTag == ELITE ) then
+					checkDisplay = 1;
+				end
+			elseif ( TitanGetVar(TITAN_QUESTS_ID, "ShowGroup") ) then
+				if ( questlist[i].questTag == GROUP ) then
 					checkDisplay = 1;
 				end
 			elseif ( TitanGetVar(TITAN_QUESTS_ID, "ShowDungeon") ) then
@@ -838,7 +850,14 @@ function TitanPanelQuestsRightClickMenu_CreateMenu()
 			info.func = TitanPanelQuests_ShowElite;
 			info.checked = TitanGetVar(TITAN_QUESTS_ID, "ShowElite");
 			UIDropDownMenu_AddButton(info, UIDROPDOWNMENU_MENU_LEVEL);
-
+			
+			-- show just group
+			info = {};
+			info.text = TITAN_QUESTS_SHOW_GROUP_TEXT;
+			info.func = TitanPanelQuests_ShowGroup;
+			info.checked = TitanGetVar(TITAN_QUESTS_ID, "ShowGroup");
+			UIDropDownMenu_AddButton(info, UIDROPDOWNMENU_MENU_LEVEL);
+			
 			-- show just dungeon
 			info = {};
 			info.text = TITAN_QUESTS_SHOW_DUNGEON_TEXT;
@@ -1108,6 +1127,25 @@ function TitanPanelQuests_ShowElite()
 		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
 	else
 		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowRaid", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowPVP", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowRegular", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowCompleted", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowIncomplete", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", nil);
+	end
+	DropDownList1:Hide();
+end
+
+function TitanPanelQuests_ShowGroup()
+	if ( TitanGetVar(TITAN_QUESTS_ID, "ShowGroup") ) then
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
+	else
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);		
 		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowRaid", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowPVP", nil);
@@ -1125,6 +1163,7 @@ function TitanPanelQuests_ShowDungeon()
 		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
 	else
 		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowRaid", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowPVP", nil);
@@ -1142,6 +1181,7 @@ function TitanPanelQuests_ShowRaid()
 		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
 	else
 		TitanSetVar(TITAN_QUESTS_ID, "ShowRaid", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowPVP", nil);
@@ -1159,6 +1199,7 @@ function TitanPanelQuests_ShowPVP()
 		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
 	else
 		TitanSetVar(TITAN_QUESTS_ID, "ShowPVP", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowRaid", nil);
@@ -1176,6 +1217,7 @@ function TitanPanelQuests_ShowRegular()
 		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
 	else
 		TitanSetVar(TITAN_QUESTS_ID, "ShowRegular", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowRaid", nil);
@@ -1193,6 +1235,7 @@ function TitanPanelQuests_ShowCompleted()
 		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
 	else
 		TitanSetVar(TITAN_QUESTS_ID, "ShowCompleted", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowIncomplete", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
@@ -1210,6 +1253,7 @@ function TitanPanelQuests_ShowIncomplete()
 		TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
 	else
 		TitanSetVar(TITAN_QUESTS_ID, "ShowIncomplete", 1);
+		TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowCompleted", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);
 		TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
@@ -1223,6 +1267,7 @@ end
 
 function TitanPanelQuests_ShowAll()
 	TitanSetVar(TITAN_QUESTS_ID, "ShowAll", 1);
+	TitanSetVar(TITAN_QUESTS_ID, "ShowGroup", nil);
 	TitanSetVar(TITAN_QUESTS_ID, "ShowElite", nil);
 	TitanSetVar(TITAN_QUESTS_ID, "ShowDungeon", nil);
 	TitanSetVar(TITAN_QUESTS_ID, "ShowRaid", nil);

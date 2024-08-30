@@ -37,6 +37,8 @@ function TitanPanelQuests_DisplayQuest()
 
 	if ( questTag == ELITE ) then
 		useTag = "+"
+	elseif (questTag == GROUP ) then
+		useTag = "g";
 	elseif ( questTag == TITAN_QUESTS_DUNGEON ) then
 		useTag = "d";
 	elseif ( questTag == TITAN_QUESTS_RAID ) then
@@ -430,6 +432,8 @@ function TitanQuests_Details_Update()
 
 	if ( questTag == ELITE ) then
 		useTag = "+"
+	elseif ( questTag == GROUP ) then
+		useTag = "g";
 	elseif ( questTag == TITAN_QUESTS_DUNGEON ) then
 		useTag = "d";
 	elseif ( questTag == TITAN_QUESTS_RAID ) then

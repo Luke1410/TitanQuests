@@ -1,4 +1,4 @@
-TITAN_QUESTS_VERSION = "0.21";
+TITAN_QUESTS_VERSION = "0.22";
 
 TITAN_QUESTS_MENU_TEXT = "Quests";
 TITAN_QUESTS_BUTTON_LABEL = "Quests: ";
@@ -11,7 +11,7 @@ TITAN_QUESTS_LEVEL_TEXT = "Level ";
 
 TITAN_QUESTS_ABOUT_VERSION_TEXT = "Version";
 TITAN_QUESTS_ABOUT_AUTHOR_TEXT = "Author";
-TITAN_QUESTS_ABOUT_POPUP_TEXT = TitanUtils_GetGreenText("Titan Panel [Quests]").."\n"..TitanUtils_GetNormalText(TITAN_QUESTS_ABOUT_VERSION_TEXT..": ")..TitanUtils_GetHighlightText(TITAN_QUESTS_VERSION).."\n"..TitanUtils_GetNormalText(TITAN_QUESTS_ABOUT_AUTHOR_TEXT..": ")..TitanUtils_GetHighlightText("Corgi/Ryessa");
+TITAN_QUESTS_ABOUT_POPUP_TEXT = TitanUtils_GetGreenText("Titan Panel [Quests]").."\n"..TitanUtils_GetNormalText(TITAN_QUESTS_ABOUT_VERSION_TEXT..": ")..TitanUtils_GetHighlightText(TITAN_QUESTS_VERSION).."\n"..TitanUtils_GetNormalText(TITAN_QUESTS_ABOUT_AUTHOR_TEXT..": ")..TitanUtils_GetHighlightText("[Corgi/Ryessa] - GroupMod by r3neGaDe");
 
 TITAN_QUESTS_SORT_TEXT = "Sort";
 TITAN_QUESTS_SORT_LOCATION_TEXT = "by Location (Default)";
@@ -20,6 +20,7 @@ TITAN_QUESTS_SORT_TITLE_TEXT = "by Title";
 
 TITAN_QUESTS_SHOW_TEXT = "Show";
 TITAN_QUESTS_SHOW_ELITE_TEXT = "only Elite";
+TITAN_QUESTS_SHOW_GROUP_TEXT = "only Group";
 TITAN_QUESTS_SHOW_DUNGEON_TEXT = "only Dungeon";
 TITAN_QUESTS_SHOW_RAID_TEXT = "only Raid";
 TITAN_QUESTS_SHOW_PVP_TEXT = "only PvP";
@@ -73,6 +74,7 @@ TITAN_QUESTS_NEWBIE_TOOLTIP_WATCHQUEST = "Add/Remove quest from Quest Tracker.";
 
 TITAN_QUESTS_TOOLTIP_QUESTS_TEXT = "Total Quests: ";
 TITAN_QUESTS_TOOLTIP_ELITE_TEXT = "Elite Quests: ";
+TITAN_QUESTS_TOOLTIP_GROUP_TEXT = "Group Quests: ";
 TITAN_QUESTS_TOOLTIP_DUNGEON_TEXT = "Dungeon Quests: ";
 TITAN_QUESTS_TOOLTIP_RAID_TEXT = "Raid Quests: ";
 TITAN_QUESTS_TOOLTIP_PVP_TEXT = "PvP Quests: ";
@@ -108,6 +110,7 @@ if ( GetLocale() == "deDE" ) then
 
 	TITAN_QUESTS_SHOW_TEXT = "Anzeige";
     TITAN_QUESTS_SHOW_ELITE_TEXT = "nur Elite-Quests";
+	TITAN_QUESTS_SHOW_GROUP_TEXT = "nur Group-Quests";
     TITAN_QUESTS_SHOW_DUNGEON_TEXT = "nur Dungeon-Quests";
     TITAN_QUESTS_SHOW_RAID_TEXT = "nur Schlachtzugs-Quests";
     TITAN_QUESTS_SHOW_PVP_TEXT = "nur PvP-Quests";
@@ -159,6 +162,7 @@ if ( GetLocale() == "deDE" ) then
 
     TITAN_QUESTS_TOOLTIP_QUESTS_TEXT = "Insgesamt # Quests: ";
     TITAN_QUESTS_TOOLTIP_ELITE_TEXT = "Davon # Elite-Quests: ";
+	TITAN_QUESTS_TOOLTIP_ELITE_QUESTS = "# Group-Quests: ";
 	TITAN_QUESTS_TOOLTIP_DUNGEON_TEXT = "# Dungeon-Quests: ";
     TITAN_QUESTS_TOOLTIP_RAID_TEXT = "# Schlachtzugs-Quests: ";
     TITAN_QUESTS_TOOLTIP_PVP_TEXT = "# PvP-Quests: ";
@@ -195,6 +199,7 @@ if ( GetLocale() == "frFR" ) then
 
 	TITAN_QUESTS_SHOW_TEXT = "Afficher";
 	TITAN_QUESTS_SHOW_ELITE_TEXT = "seulement Elites";
+	TITAN_QUESTS_SHOW_GROUP_TEXT = "seulement Groups";
 	TITAN_QUESTS_SHOW_DUNGEON_TEXT = "seulement Donjons";
 	TITAN_QUESTS_SHOW_RAID_TEXT = "seulement Raids";
 	TITAN_QUESTS_SHOW_PVP_TEXT = "seulement JcJ";
@@ -248,6 +253,7 @@ if ( GetLocale() == "frFR" ) then
 
 	TITAN_QUESTS_TOOLTIP_QUESTS_TEXT = "# de qu\195\170tes: ";
 	TITAN_QUESTS_TOOLTIP_ELITE_TEXT = "# de qu\195\170tes Elite: ";
+	TITAN_QUESTS_TOOLTIP_GROUP_TEXT = "# de qu\195\170\tes Group: ";
 	TITAN_QUESTS_TOOLTIP_DUNGEON_TEXT = "# de qu\195\170tes Donjon: ";
 	TITAN_QUESTS_TOOLTIP_RAID_TEXT = "# de qu\195\170tes Raid: ";
 	TITAN_QUESTS_TOOLTIP_PVP_TEXT = "# de qu\195\170tes JcJ: ";
@@ -282,6 +288,7 @@ if ( GetLocale() == "koKR" ) then
 	
 	TITAN_QUESTS_SHOW_TEXT = "Show";
 	TITAN_QUESTS_SHOW_ELITE_TEXT = "only Elite";
+	TITAN_QUESTS_SHOW_GROUP_TEXT = "only Group";
 	TITAN_QUESTS_SHOW_DUNGEON_TEXT = "only Dungeon";
 	TITAN_QUESTS_SHOW_RAID_TEXT = "only Raid";
 	TITAN_QUESTS_SHOW_PVP_TEXT = "only PvP";
@@ -334,6 +341,7 @@ if ( GetLocale() == "koKR" ) then
 
 	TITAN_QUESTS_TOOLTIP_QUESTS_TEXT = "# of quests: ";
 	TITAN_QUESTS_TOOLTIP_ELITE_TEXT = "# of Elite quests: ";
+	TITAN_QUESTS_TOOLTIP_GROUP_TEXT = "# of Group Quests: ";
 	TITAN_QUESTS_TOOLTIP_DUNGEON_TEXT = "# of Dungeon quests: ";
 	TITAN_QUESTS_TOOLTIP_RAID_TEXT = "# of Raid quests: ";
 	TITAN_QUESTS_TOOLTIP_PVP_TEXT = "# of PvP quests: ";

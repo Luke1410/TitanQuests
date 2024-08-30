@@ -15,6 +15,8 @@ function TitanPanelQuests_GetQuestTagText(questID)
 	-- Loc Note: Need to localize these tags - Ryessa
 	if ( Tag == ELITE ) then
 		useTag = "+"
+	elseif ( Tag == GROUP ) then
+		useTag = "g";
 	elseif ( Tag == TITAN_QUESTS_DUNGEON ) then
 		useTag = "d";
 	elseif ( Tag == TITAN_QUESTS_RAID ) then
